@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda - Red Ictus México</title>
+    <title>Tienda Oficial - Red Ictus México</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     
@@ -50,40 +50,82 @@
             color: #333333;
             transition: color 0.3s ease-in-out;
         }
-        
-        /* Animación y color rojo solicitado */
-        .nav-links li.active, .nav-links li:hover { 
-            color: #d31224; 
-        }
+        .nav-links li:hover { color: #d31224; }
+        /* Mantener Tienda en rojo en esta página */
+        .nav-links li.active-page { color: #d31224; } 
 
         /* --- CONTENIDO DE LA TIENDA --- */
-         .store-container {
+        .store-container {
             padding: 50px;
             text-align: center;
             background-color: #f8f9fa;
             min-height: 80vh;
         }
         .store-header { margin-bottom: 40px; }
-        .placeholder-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columnas del mismo tamaño */
+            grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
+
+        /* ESTILOS DE LA TARJETA (PRODUCT CARD) Y ANIMACIÓN */
         .product-card {
             background: white;
             padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 2px solid #ddd; /* Borde inicial */
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer; /* Indica que es clickeable */
+            
+            /* Duración de las animaciones al pasar el mouse */
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* EFECTO HOVER SOLICITADO */
+        .product-card:hover {
+            transform: scale(1.05); /* Se hace un poquito más grande */
+            border-color: #ffb7c5; /* Rosa Pastel */
+            box-shadow: 0 5px 20px rgba(255, 183, 197, 0.6); /* Brillo rosa */
+        }
+
+        /* Estilos para las imágenes de los productos */
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain; /* Ajusta la imagen sin deformarla */
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            height: 40px; /* Alineación si los títulos son largos */
+        }
+
+        .product-card p {
+            font-weight: bold;
+            color: #d31224;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            background: #d31224;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .product-card:hover .buy-btn {
+            background: #333; /* El botón cambia de color al hacer hover en la tarjeta */
         }
     </style>
 </head>
@@ -104,13 +146,13 @@
             <img class="logo-image" src="https://redictus.org/images/logo/redictus-logo.jpg" alt="Red ICTUS México">
         </div>
         <ul class="nav-links">
-            <li class="active" onclick="window.location.href='index.html'">Red ICTUS México</li>
+            <li onclick="window.location.href='index.html'">Red ICTUS México</li>
             <li>Nosotros</li>
             <li>Servicios</li>
             <li>Qué nos mueve</li>
             <li>Donaciones</li>
             <li>Eventos</li>
-            <li onclick="window.location.href='tienda.html'">Tienda</li>
+            <li class="active-page" onclick="window.location.href='tienda.html'">Tienda</li>
             <li>Contacto</li>
             <li><i class="fas fa-bars"></i></li>
         </ul>
@@ -119,33 +161,37 @@
     <div class="store-container">
         <div class="store-header">
             <h1>Tienda Oficial</h1>
-            <p>Apoyanos con una donación "Tu donación puede cambiar una vida".</p>
+            <p>Apóyanos con una donación "Tu donación puede cambiar una vida".</p>
         </div>
 
         <div class="product-grid">
             
-            <div class="product-card">
+            <div class="product-card" onclick="window.location.href='peluche.html'">
+                <img src="\imagenes\peluche-rosa-ninguno.png" alt="Peluche Cerebro" class="product-img">
                 <h3>Brain Buddy Plush</h3>
                 <p>$300.00 MXN</p>
-                <button style="margin-top:10px; padding:5px 10px; cursor:pointer;">Comprar</button>
+                <button class="buy-btn">Ver Detalles</button>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" onclick="window.location.href='mochila.html'">
+                <img src="\imagenes\Mochila.png" alt="Mochila Red Ictus" class="product-img">
                 <h3>Mochila RED ICTUS</h3>
-                <p>$300.00 MXN</p>
-                <button style="margin-top:10px; padding:5px 10px; cursor:pointer;">Comprar</button>
+                <p>$450.00 MXN</p>
+                <button class="buy-btn">Ver Detalles</button>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" onclick="window.location.href='termo.html'">
+                <img src="\imagenes\Termo.png" alt="Termo Red Ictus" class="product-img">
                 <h3>Termo RED ICTUS</h3>
-                <p>$300.00 MXN</p>
-                <button style="margin-top:10px; padding:5px 10px; cursor:pointer;">Comprar</button>
+                <p>$350.00 MXN</p>
+                <button class="buy-btn">Ver Detalles</button>
             </div>
 
-            <div class="product-card">
-                <h3>Pulsera RED ICTUS   </h3>
-                <p>$300.00 MXN</p>
-                <button style="margin-top:10px; padding:5px 10px; cursor:pointer;">Comprar</button>
+            <div class="product-card" onclick="window.location.href='pulsera.html'">
+                <img src="\imagenes\Pulsera.png" alt="Pulsera Red Ictus" class="product-img">
+                <h3>Pulsera RED ICTUS</h3>
+                <p>$100.00 MXN</p>
+                <button class="buy-btn">Ver Detalles</button>
             </div>
 
         </div>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto - Red Ictus México</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos base consistentes */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        .navbar { background: #fff; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; border-bottom: 1px solid #eaeaea; }
+        .logo-container img { height: 60px; cursor: pointer; }
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links li { font-size: 14px; font-weight: 600; cursor: pointer; transition: color 0.3s; }
+        .nav-links li:hover { color: #d31224; }
+
+        .container { display: flex; max-width: 1100px; margin: 50px auto; gap: 60px; padding: 0 20px; }
+        .col-visual { flex: 1; text-align: center; }
+        .col-visual img { width: 100%; max-width: 450px; border-radius: 8px; }
+        
+        .col-info { flex: 1; max-width: 400px; }
+        .precio { font-size: 28px; color: #B12704; font-weight: bold; margin: 15px 0; }
+        
+        /* Botones estilo Amazon */
+        .btn-comprar { width: 100%; background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 12px; font-size: 16px; cursor: pointer; font-weight: 600; }
+        .btn-comprar:hover { background: #f7ca00; }
+
+        /* Pasarela de pago */
+        .seccion-pago { display: none; margin-top: 25px; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; }
+        .metodos { display: flex; gap: 10px; margin-bottom: 15px; }
+        .metodos button { flex: 1; padding: 10px; border: 1px solid #ccc; background: #fff; cursor: pointer; border-radius: 5px; font-size: 12px; }
+        .metodos button.active { border-color: #007bff; background: #e7f1ff; font-weight: bold; }
+        
+        input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .btn-final { width: 100%; background: #d31224; color: #fff; border: none; padding: 12px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        
+        #exito { display: none; text-align: center; padding: 20px; }
+                .footer-frase {
+            text-align: center;
+            padding: 40px 20px 60px 20px;
+            background-color: #f8f9fa;
+            width: 100%;
+            clear: both;
+        }
+
+        #texto-maquina {
+             font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: #d31224; /* Rojo de Red Ictus */
+            display: inline-block;
+            border-right: 3px solid #d31224; /* Simula el cursor */
+            padding-right: 5px;
+            margin: 0;
+            min-height: 35px; /* Evita que la página salte mientras se escribe */
+            animation: parpadear-cursor 0.8s infinite;
+        }
+
+        /* Animación del cursor */
+        @keyframes parpadear-cursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #d31224; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="https://redictus.org/images/logo/redictus-logo.jpg" alt="Red Ictus">
+        </div>
+        <ul class="nav-links">
+            <li onclick="window.location.href='index.html'">Inicio</li>
+            <li onclick="window.location.href='tienda.html'">Tienda</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="col-visual">
+            <img id="img-principal" src="imagenes/pulsera.png" alt="Producto">
+        </div>
+
+        <div class="col-info">
+            <h1 id="titulo-prod">Pulsera RED ICTUS</h1>
+            <p style="color: #555; margin-top: 10px;">Producto oficial de Red Ictus México.</p>
+            <div class="precio" id="precio-txt">$450.00 MXN</div>
+
+            <button id="btn-comprar" class="btn-comprar" onclick="mostrarPago()">Comprar Ahora</button>
+
+            <div id="seccion-pago" class="seccion-pago">
+                <div class="metodos">
+                    <button id="m-tarjeta" class="active" onclick="setMetodo('tarjeta')">Tarjeta</button>
+                    <button id="m-paypal" onclick="setMetodo('paypal')">PayPal</button>
+                </div>
+
+                <div id="f-tarjeta">
+                    <input type="text" placeholder="Número de tarjeta">
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" placeholder="MM/AA">
+                        <input type="text" placeholder="CVC">
+                    </div>
+                    <button class="btn-final" onclick="finalizar()">Confirmar Pago</button>
+                </div>
+
+                <div id="f-paypal" style="display:none; text-align:center;">
+                    <p style="font-size:13px; margin-bottom:15px;">Pagarás de forma segura con tu cuenta de PayPal.</p>
+                    <button class="btn-final" style="background:#ffc439; color:#000;" onclick="finalizar()">Pagar con PayPal</button>
+                </div>
+
+                <div id="exito">
+                    <i class="fas fa-check-circle" style="color:green; font-size:40px;"></i>
+                    <h3 style="color:green; margin-top:10px;">¡Pago Exitoso!</h3>
+                    <button class="btn-final" style="background:#333; margin-top:15px;" onclick="window.location.href='tienda.html'">Volver a Tienda</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarPago() {
+            document.getElementById('btn-comprar').style.display = 'none';
+            document.getElementById('seccion-pago').style.display = 'block';
+        }
+
+        function setMetodo(m) {
+            document.getElementById('m-tarjeta').className = (m === 'tarjeta' ? 'active' : '');
+            document.getElementById('m-paypal').className = (m === 'paypal' ? 'active' : '');
+            document.getElementById('f-tarjeta').style.display = (m === 'tarjeta' ? 'block' : 'none');
+            document.getElementById('f-paypal').style.display = (m === 'paypal' ? 'block' : 'none');
+        }
+
+        function finalizar() {
+            document.getElementById('f-tarjeta').style.display = 'none';
+            document.getElementById('f-paypal').style.display = 'none';
+            document.querySelector('.metodos').style.display = 'none';
+            document.getElementById('exito').style.display = 'block';
+        }
+                // --- ANIMACIÓN DE MÁQUINA DE ESCRIBIR ---
+        const frase = '"Tu donación puede cambiar una vida"';
+        let indexLetra = 0;
+
+        function efectoEscribir() {
+            if (indexLetra < frase.length) {
+                document.getElementById("texto-maquina").innerHTML += frase.charAt(indexLetra);
+                indexLetra++;
+                setTimeout(efectoEscribir, 70); // Velocidad: 70 milisegundos por letra
+            }
+        }
+
+        // Iniciar la animación automáticamente cuando la página termine de cargar
+        window.addEventListener('load', efectoEscribir);
+    </script>
+        <div class="footer-frase">
+        <h2 id="texto-maquina"></h2>
+    </div>
+</body>
+</html>

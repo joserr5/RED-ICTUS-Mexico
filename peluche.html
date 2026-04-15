@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Buddy Plush - Red Ictus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        .navbar { background-color: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; border-bottom: 1px solid #eaeaea; }
+        .logo-container img { height: 60px; }
+        .nav-links { display: flex; align-items: center; list-style: none; gap: 25px; }
+        .nav-links li { font-size: 14px; font-weight: 600; cursor: pointer; color: #333333; transition: color 0.3s; }
+        .nav-links li:hover { color: #d31224; }
+
+        /* Estructura principal dividida en 2 columnas */
+        .container { display: flex; max-width: 1200px; margin: 40px auto; gap: 40px; padding: 0 20px; }
+        
+        /* Columna Izquierda: Imagen y Variaciones */
+        .col-imagen { flex: 1; }
+        .main-img-container { text-align: center; margin-bottom: 20px; }
+        .main-img-container img { width: 100%; max-width: 400px; object-fit: contain; border-radius: 8px; }
+        
+        .variations-section { margin-bottom: 20px; }
+        .variations-section h4 { margin-bottom: 10px; font-size: 14px; color: #555; }
+        .btn-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+        
+        /* Botones estilo Amazon */
+        .btn-var { 
+            padding: 8px 12px; border: 1px solid #ccc; background: white; 
+            border-radius: 4px; cursor: pointer; font-size: 13px; transition: 0.2s;
+        }
+        .btn-var:hover { background: #f0f0f0; }
+        .btn-var.active { border-color: #e77600; background-color: #fdf8f3; font-weight: bold; color: #e77600; box-shadow: 0 0 3px rgba(231,118,0,0.5); }
+
+        /* Columna Derecha: Compra y Pago */
+        .col-compra { flex: 1; max-width: 450px; }
+        .col-compra h1 { font-size: 28px; margin-bottom: 10px; }
+        .precio { font-size: 24px; color: #B12704; font-weight: bold; margin-bottom: 20px; }
+        
+        .btn-comprar { width: 100%; background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 12px; font-size: 16px; cursor: pointer; transition: 0.2s; margin-bottom: 20px; }
+        .btn-comprar:hover { background: #f7ca00; }
+
+        /* Sección de Pago (Oculta al inicio) */
+        .seccion-pago { display: none; background: #f9f9f9; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .metodos-pago { display: flex; gap: 10px; margin-bottom: 15px; }
+        .metodos-pago button { flex: 1; padding: 10px; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px; }
+        .metodos-pago button.active { border-color: #007bff; background: #e7f1ff; font-weight: bold; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .btn-procesar { width: 100%; background: #d31224; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+        #form-paypal { display: none; text-align: center; }
+        #form-paypal img { width: 150px; margin-bottom: 15px; }
+        /* --- Estilo de la Frase Animada --- */
+        .footer-frase {
+            text-align: center;
+            padding: 40px 20px 60px 20px;
+            background-color: #f8f9fa;
+            width: 100%;
+            clear: both;
+        }
+
+        #texto-maquina {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: #d31224; /* Rojo de Red Ictus */
+            display: inline-block;
+            border-right: 3px solid #d31224; /* Simula el cursor */
+            padding-right: 5px;
+            margin: 0;
+            min-height: 35px; /* Evita que la página salte mientras se escribe */
+            animation: parpadear-cursor 0.8s infinite;
+        }
+
+        /* Animación del cursor */
+        @keyframes parpadear-cursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #d31224; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="https://redictus.org/images/logo/redictus-logo.jpg" alt="Red ICTUS México">
+        </div>
+        <ul class="nav-links">
+            <li onclick="window.location.href='index.html'">Red ICTUS México</li>
+            <li onclick="window.location.href='tienda.html'">← Volver a Tienda</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+<div class="col-imagen">
+            <div class="main-img-container">
+                <img id="img-producto" src="imagenes/peluche-azul-ninguno.png" alt="Brain Buddy Plush" onerror="this.src='https://via.placeholder.com/400x400/eeeeee/333333?text=Combinación+no+disponible'">
+            </div>
+
+            <div class="variations-section">
+                <h4>Color: <span id="label-color" style="font-weight: bold; color: #000;">Azul</span></h4>
+                <div class="btn-group" id="grupo-colores">
+                    <button class="btn-var" onclick="cambiarVariacion('color', 'negro')">Negro</button>
+                    <button class="btn-var" onclick="cambiarVariacion('color', 'amarillo')">Amarillo</button>
+                    <button class="btn-var" onclick="cambiarVariacion('color', 'verde')">Verde</button>
+                    <button class="btn-var" onclick="cambiarVariacion('color', 'rosa')">Rosa</button>
+                    <button class="btn-var active" onclick="cambiarVariacion('color', 'azul')">Azul</button>
+                </div>
+            </div>
+
+            <div class="variations-section">
+                <h4>Accesorio: <span id="label-accesorio" style="font-weight: bold; color: #000;">Ninguno</span></h4>
+                <div class="btn-group" id="grupo-accesorios">
+                    <button class="btn-var active" onclick="cambiarVariacion('accesorio', 'ninguno')">Ninguno</button>
+                    <button class="btn-var" onclick="cambiarVariacion('accesorio', 'gorrito')">Gorro</button>
+                    <button class="btn-var" onclick="cambiarVariacion('accesorio', 'lentes')">Lentes</button>
+                    <button class="btn-var" onclick="cambiarVariacion('accesorio', 'gorro_lentes')">Gorro y Lentes</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-compra">
+            <h1>Brain Buddy Plush</h1>
+            <p style="color: #555; margin-bottom: 15px;">Suave peluche en forma de cerebro para conciencia.</p>
+            <div class="precio">$300.00 MXN</div>
+
+            <button id="btn-comprar-inicial" class="btn-comprar" onclick="iniciarCompra()">Comprar Ahora</button>
+
+            <div id="seccion-pago" class="seccion-pago">
+                <h3>Pasarela de Pago</h3>
+                <p style="font-size: 12px; margin-bottom: 15px; color: #666;">Selecciona tu método de pago</p>
+                
+                <div class="metodos-pago">
+                    <button id="btn-tarjeta" class="active" onclick="cambiarMetodoPago('tarjeta')"><i class="fas fa-credit-card"></i> Tarjeta</button>
+                    <button id="btn-paypal" onclick="cambiarMetodoPago('paypal')"><i class="fab fa-paypal"></i> PayPal</button>
+                </div>
+
+                <div id="form-tarjeta">
+                    <div class="form-group"><input type="text" placeholder="Nombre del Titular"></div>
+                    <div class="form-group"><input type="text" placeholder="Número de Tarjeta"></div>
+                    <div style="display: flex; gap: 10px;">
+                        <div class="form-group"><input type="text" placeholder="MM/AA"></div>
+                        <div class="form-group"><input type="text" placeholder="CVC"></div>
+                    </div>
+                    <button class="btn-procesar" onclick="procesarPago()">Pagar $300.00</button>
+                </div>
+
+                <div id="form-paypal">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                    <p style="font-size: 13px; margin-bottom: 15px;">Serás redirigido a PayPal para completar tu compra de forma segura.</p>
+                    <button class="btn-procesar" style="background: #ffc439; color: #000;" onclick="procesarPago()">Pagar con PayPal</button>
+                </div>
+                
+                <div id="mensaje-exito" style="display: none; text-align: center; padding: 20px;">
+                    <i class="fas fa-check-circle" style="color: green; font-size: 40px; margin-bottom: 10px;"></i>
+                    <h3 style="color: green;">¡Pago Exitoso!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+        // 1. LISTA EXACTA DE LAS COMBINACIONES QUE SÍ EXISTEN EN TU CARPETA
+        const combinacionesValidas = [
+            "azul-ninguno",
+            "azul-gorrito",
+            "azul-lentes",
+            "azul-gorro_lentes",
+            "rosa-ninguno",
+            "negro-ninguno",
+            "verde-ninguno",
+            "amarillo-ninguno"
+        ];
+
+        let estadoActual = { color: 'azul', accesorio: 'ninguno' };
+
+        function cambiarVariacion(tipo, valor) {
+            estadoActual[tipo] = valor;
+            
+            // Actualizar interfaz de botones
+            const botones = document.getElementById(`grupo-${tipo === 'color' ? 'colores' : 'accesorios'}`).children;
+            for (let btn of botones) { btn.classList.remove('active'); }
+            event.target.classList.add('active');
+
+            // Actualizar etiqueta de texto
+            document.getElementById(`label-${tipo}`).innerText = event.target.innerText;
+
+            // Validar si la combinación actual existe
+            const combinacionBuscada = `${estadoActual.color}-${estadoActual.accesorio}`;
+            const btnComprar = document.getElementById('btn-comprar-inicial');
+
+            if (combinacionesValidas.includes(combinacionBuscada)) {
+                // SÍ EXISTE: Mostrar la combinación exacta y activar botón
+                document.getElementById('img-producto').src = `imagenes/peluche-${estadoActual.color}-${estadoActual.accesorio}.png`;
+                
+                btnComprar.style.background = '#ffd814'; // Amarillo
+                btnComprar.style.cursor = 'pointer';
+                btnComprar.innerText = 'Comprar Ahora';
+                btnComprar.disabled = false;
+            } else {
+                // NO EXISTE: Mostrar el peluche del color seleccionado PERO SIN accesorio
+                document.getElementById('img-producto').src = `imagenes/peluche-${estadoActual.color}-ninguno.png`;
+                
+                // Cambiar el texto del botón para explicar por qué no se puede comprar
+                btnComprar.style.background = '#cccccc'; // Gris
+                btnComprar.style.cursor = 'not-allowed';
+                btnComprar.innerText = 'Accesorio no disponible en este color';
+                btnComprar.disabled = true;
+                
+                // Ocultar pasarela de pago si estaba abierta
+                document.getElementById('seccion-pago').style.display = 'none';
+            }
+        }
+
+        // --- LÓGICA DE INTERFAZ DE PAGO ---
+        function iniciarCompra() {
+            document.getElementById('btn-comprar-inicial').style.display = 'none';
+            document.getElementById('seccion-pago').style.display = 'block';
+        }
+
+        function cambiarMetodoPago(metodo) {
+            document.getElementById('btn-tarjeta').classList.remove('active');
+            document.getElementById('btn-paypal').classList.remove('active');
+            
+            if(metodo === 'tarjeta') {
+                document.getElementById('btn-tarjeta').classList.add('active');
+                document.getElementById('form-tarjeta').style.display = 'block';
+                document.getElementById('form-paypal').style.display = 'none';
+            } else {
+                document.getElementById('btn-paypal').classList.add('active');
+                document.getElementById('form-tarjeta').style.display = 'none';
+                document.getElementById('form-paypal').style.display = 'block';
+            }
+        }
+
+        function procesarPago() {
+            document.getElementById('form-tarjeta').style.display = 'none';
+            document.getElementById('form-paypal').style.display = 'none';
+            document.querySelector('.metodos-pago').style.display = 'none';
+            document.getElementById('mensaje-exito').style.display = 'block';
+        }
+        // --- ANIMACIÓN DE MÁQUINA DE ESCRIBIR ---
+        const frase = '"Tu donación puede cambiar una vida"';
+        let indexLetra = 0;
+
+        function efectoEscribir() {
+            if (indexLetra < frase.length) {
+                document.getElementById("texto-maquina").innerHTML += frase.charAt(indexLetra);
+                indexLetra++;
+                setTimeout(efectoEscribir, 70); // Velocidad: 70 milisegundos por letra
+            }
+        }
+
+        // Iniciar la animación automáticamente cuando la página termine de cargar
+        window.addEventListener('load', efectoEscribir);
+    </script>
+    <div class="footer-frase">
+        <h2 id="texto-maquina"></h2>
+    </div>
+</body>
+</html>
