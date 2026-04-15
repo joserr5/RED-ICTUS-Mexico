@@ -66,19 +66,25 @@
         }
 
         /* --- SECCIÓN PRINCIPAL (HERO) --- */
+/* --- SECCIÓN PRINCIPAL (HERO) --- */
         .hero {
-           background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://redictus.org/images/slideshow/redictus-slider-1000.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://redictus.org/images/slideshow/redictus-slider-1000.jpg');
+            background-size: cover;
+            background-position: center top; /* Ajustado para que se vea mejor la imagen */
+            min-height: 80vh; /* Altura mínima garantizada */
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            overflow: hidden;
         }
         .hero h1 {
             color: #ffffff;
-            font-size: 5vw; /* Tamaño responsivo */
+            font-size: 5vw; 
             font-weight: 400;
             letter-spacing: 2px;
             text-align: center;
+            z-index: 2;
         }
 
         /* --- ELEMENTOS FLOTANTES --- */
@@ -177,7 +183,7 @@
         <div class="fb-tab">facebook</div>
 
         <div class="lang-selector">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png" alt="Bandera España">
+ <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/120px-Bandera_de_Espa%C3%B1a.svg.png" alt="ES">
             ES <i class="fas fa-chevron-up" style="font-size: 10px; color: #666;"></i>
         </div>
     </section>
