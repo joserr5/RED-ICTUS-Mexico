@@ -1,12 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOLA</title>
-    <p>HOLA</p>
+    <title>Gracias por tu apoyo - Red Ictus México</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        
+        /* --- NAVEGACIÓN --- */
+        .top-bar { background-color: #3b3b3b; color: #d1d1d1; display: flex; justify-content: space-between; padding: 8px 40px; font-size: 12px; }
+        .navbar { background-color: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; border-bottom: 1px solid #eaeaea; }
+        .logo-container img { height: 60px; cursor: pointer; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links li { font-size: 14px; font-weight: 600; cursor: pointer; color: #333333; transition: color 0.3s; }
+        .nav-links li:hover { color: #d31224; }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        .content-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header-gracias {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-gracias h1 {
+            color: #d31224;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .header-gracias p {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* --- REPRODUCTOR DE VIDEO --- */
+        .video-wrapper {
+            width: 100%;
+            margin: 30px 0;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        /* --- SECCIONES DE INFORMACIÓN --- */
+        .info-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #d31224;
+        }
+
+        .info-section h2 {
+            color: #002b5c;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .info-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .info-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .info-section li {
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <div class="top-bar">
+        <div><i class="fab fa-facebook-f" style="margin-right: 15px;"></i><i class="fab fa-instagram"></i></div>
+        <div><i class="far fa-envelope"></i> contacto@redictus.org</div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="https://redictus.org/images/logo/redictus-logo.jpg" alt="Red ICTUS México">
+        </div>
+        <ul class="nav-links">
+            <li onclick="window.location.href='index.html'">Red ICTUS México</li>
+            <li onclick="window.location.href='tienda.html'">Tienda</li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        
+        <div class="header-gracias">
+            <h1>¡Gracias por tu donación!</h1>
+            <p>Su apoyo marca significativamente la vida de las personas afectadas por un ictus. Gracias a usted, más pacientes y familias pueden recibir la atención, el apoyo y los cuidados que necesitan.</p>
+        </div>
+
+        <div class="video-wrapper">
+            <video controls>
+                <source src="imagenes/redictusvid.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de videos.
+            </video>
+        </div>
+
+        <div class="info-section">
+            <h2>Sobre RED ICTUS</h2>
+            <p>RED ICTUS se dedica a sensibilizar sobre el ictus, promover su prevención y brindar apoyo a los pacientes y sus familias. La organización trabaja para mejorar la calidad de vida y reducir el impacto de esta afección mediante la educación y la asistencia.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Prevención</h2>
+            <p>Puedes reducir significativamente el riesgo de sufrir un ictus manteniendo un estilo de vida saludable y cuidando tu cuerpo de forma constante.</p>
+            <ul>
+                <li><strong>Control médico:</strong> Uno de los factores más importantes es mantener la presión arterial bajo control, ya que la hipertensión es una de las principales causas. También es importante monitorear enfermedades como la diabetes y el colesterol. Acudir a chequeos médicos periódicos permite detectar riesgos a tiempo.</li>
+                <li><strong>Alimentación:</strong> Llevar una alimentación balanceada, rica en frutas, verduras y granos enteros, y baja en grasas saturadas y sal, ayuda a mejorar la salud cardiovascular.</li>
+                <li><strong>Actividad Física:</strong> Realizar actividad física de manera regular al menos 3-4 veces por semana, contribuye a mantener el corazón y los vasos sanguíneos en buen estado.</li>
+                <li><strong>Hábitos:</strong> Evitar hábitos perjudiciales como fumar y consumir alcohol en exceso es clave, ya que afectan directamente la circulación sanguínea.</li>
+            </ul>
+            <p><strong>La prevención es la mejor forma de cuidar tu salud y reducir el riesgo de un ictus.</strong></p>
+        </div>
+
+        <div class="info-section">
+            <h2>¿Qué hacer en caso de un ictus?</h2>
+            <p>Si sospechas que alguien está sufriendo un ictus, es fundamental actuar de inmediato, ya que cada minuto cuenta. Puedes identificar los síntomas usando el <strong>método FAST</strong>:</p>
+            <ul>
+                <li>Observa si hay caída en un lado de la cara.</li>
+                <li>Debilidad en un brazo.</li>
+                <li>Dificultad para hablar.</li>
+            </ul>
+            <p>Si notas alguno de estos signos, <strong>llama a emergencias inmediatamente</strong> y no esperes a que los síntomas desaparezcan. Mientras llega la ayuda, mantén a la persona tranquila y en una posición cómoda, preferiblemente sentada o recostada con la cabeza ligeramente elevada.</p>
+            <p>No le des comida, bebida ni medicamentos, ya que podría haber riesgo de asfixia. Tampoco intentes trasladarla por tu cuenta a menos que sea absolutamente necesario; es mejor esperar a los servicios médicos. Actuar rápido puede salvar la vida y reducir las secuelas de un ictus.</p>
+        </div>
+
+    </div>
+
 </body>
 </html>
