@@ -141,6 +141,52 @@
             width: 25px;
             height: 20px;
         }
+        /* --- BOTÓN FLOTANTE DE INSTAGRAM EN HOME --- */
+/* --- BOTÓN FLOTANTE DE INSTAGRAM EN HOME --- */
+.ig-floating-button {
+    position: absolute; 
+    bottom: 30px; /* Distancia desde la parte inferior */
+    right: 40px;  /* Distancia desde la derecha */
+    
+    font-size: 65px; /* Ajustado un poco para que encaje mejor en la esquina */
+    color: #f0f0f0; 
+    transition: all 0.5s ease-in-out; 
+    z-index: 10; 
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* El código del hover y la animación @keyframes se quedan exactamente igual */
+
+/* EFECTO HOVER: BRILLO Y COLOR PERIÓDICO */
+.ig-floating-button:hover {
+    transform: translate(-50%, -50%) scale(1.15); /* Crece un poquito */
+    
+    /* Efecto de color de texto degradado de Instagram */
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Hace invisible el color por defecto para mostrar el degradado de fondo */
+    
+    /* Activar la animación de brillo periódico solicitada */
+    animation: igPeriodicGlow 2.5s infinite alternate;
+}
+
+/* ANIMACIÓN: El logo brilla a color cada cierto tiempo */
+@keyframes igPeriodicGlow {
+    0%, 100% {
+        /* Brillo sutil */
+        filter: drop-shadow(0 0 5px rgba(220, 39, 67, 0.4)) saturate(1);
+    }
+    50% {
+        /* Brillo intenso y saturación extra periódicamente */
+        filter: drop-shadow(0 0 25px rgba(188, 24, 136, 0.9)) saturate(1.8);
+    }
+}
     </style>
 </head>
 <body>
@@ -183,10 +229,14 @@
 
         <div class="fb-tab">facebook</div>
 
+
         <div class="lang-selector">
  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/120px-Bandera_de_Espa%C3%B1a.svg.png" alt="ES">
             ES <i class="fas fa-chevron-up" style="font-size: 10px; color: #666;"></i>
         </div>
+                 <a href="https://joserr5.github.io/RED-ICTUS-Mexico/collage.html" class="ig-floating-button" title="Visita nuestro Collage de Instagram">
+     <i class="fab fa-instagram"></i>
+        </a>
     </section>
 
 </body>

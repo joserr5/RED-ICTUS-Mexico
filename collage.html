@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Collage de Instagram - Red Ictus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            background-color: #fcfcfc; /* Fondo muy claro y limpio */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        /* --- Encabezado con efecto de escritura a color --- */
+        .collage-header {
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e1e1e1;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        #typewriter-text {
+            font-family: 'Dancing Script', cursive; /* Fuente cursiva */
+            font-size: 38px;
+            display: inline-block;
+            border-right: 3px solid #ccc; /* El cursor que parpadea */
+            padding-right: 8px;
+            min-height: 50px; /* Prevenir saltos de página */
+            line-height: 1.2;
+            animation: parpadear-cursor 0.8s infinite;
+
+            /* TRUCO CSS: Colores degradados de Instagram aplicados al texto */
+            background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* Muestra el degradado de fondo a través de la letra */
+            filter: saturate(1.2); /* Boost ligero de color */
+        }
+
+        /* Animación del cursor de escritura */
+        @keyframes parpadear-cursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #f09433; /* Usar un color de IG para el cursor */ }
+        }
+
+        /* --- Contenedor de la Imagen Collage Central --- */
+        .collage-container {
+            flex-grow: 1; /* Ocupa el espacio vertical restante */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .collage-image {
+            max-width: 90%; /* Se adapta al ancho de pantalla */
+            max-height: 80vh; /* Se adapta a la altura de pantalla */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra elegante */
+            transition: transform 0.3s ease;
+            border: 5px solid #fff; /* Efecto Polaroid ligero */
+        }
+        .collage-image:hover {
+            transform: scale(1.02); /* Crece sutilmente al pasar el mouse */
+        }
+
+        /* --- Botón para volver --- */
+        .btn-return {
+            margin-bottom: 40px;
+            padding: 12px 25px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-return:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="collage-header">
+        <h2 id="typewriter-text"></h2>
+    </div>
+
+    <div class="collage-container">
+        <img src="imagenes/telefono.png" alt="Nuestro Collage de Instagram - Red Ictus" class="collage-image">
+    </div>
+
+    <a href="index.html" class="btn-return">← Volver al Inicio</a>
+
+    <script>
+        // El texto solicitado exacto
+        const textToType = "síguenos en nuestra cuenta de instagram @red_ictus";
+        const typewriterSpan = document.getElementById('typewriter-text');
+        let charIndex = 0;
+
+        function typeWriterEffect() {
+            if (charIndex < textToType.length) {
+                // Añadir el caracter actual
+                typewriterSpan.innerHTML += textToType.charAt(charIndex);
+                charIndex++;
+                // Velocidad de escritura (milisegundos)
+                setTimeout(typeWriterEffect, 65); 
+            }
+        }
+
+        // Iniciar la animación automáticamente al cargar la página
+        window.addEventListener('load', typeWriterEffect);
+    </script>
+</body>
+</html>
